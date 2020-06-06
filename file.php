@@ -214,7 +214,7 @@ function maintop() {
 	. '<div class="page-header text-center">'
 	. "<span></span><h1></br>$sitetitle</h1>"
 	. "<h5>请使用<strong>Chrome</strong>浏览器打开，否则可能导致排版错误</h5>"
-	. "<h5>注意：正在使用稳定的Beta版本</h5>"
+	. "<h5>注意：正在使用稳定的Beta版本,使用前注意备份数据</h5>"
 	. '</div>';
 }
 
@@ -228,7 +228,7 @@ function mainbottom() {
 		. '<div id="paddingDiv"></div>'
 	. '<footer class="blog-footer">'
 	. '<p>&copy; MBRBlock File Explorer Online</p>'
-	. '<p>Bulid 2020/6/6 (Beta 1.1.1)</p>'
+	. '<p>Bulid 2020/6/7 (Beta 1.1.2)</p>'
 	. '</footer>'
 	. '<script>if($("body").height()<$(window).height()){$("div#paddingDiv").height($(window).height()-$("body").height());}</script>'
 	. '</body>'
