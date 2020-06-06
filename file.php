@@ -1,7 +1,8 @@
 <?php
 $sitetitle = "File Explorer";
-$username = "MBRjun";
-$password = "Aa080208";
+$username = "user";
+$password = "123456";
+//账号密码
 $timezone = "Asia/Shanghai";
 $open_basedir = __DIR__;
 $safe_num = 3;
