@@ -1,7 +1,8 @@
 <?php
 $sitetitle = "File Explorer";
-$username = "961274111@qq.com";
-$password = "musicwind";
+$username = "user";
+$password = "123456";
+//账号密码
 $timezone = "Asia/Shanghai";
 $open_basedir = __DIR__;
 $safe_num = 3;
@@ -19,7 +20,7 @@ date_default_timezone_set( $timezone ); //设置默认时区
 ini_set( 'open_basedir', $open_basedir ); //限制可访问目录，避免恶意修改
 define( 'php_self', substr( $_SERVER[ 'PHP_SELF' ], strrpos( $_SERVER[ 'PHP_SELF' ], '/' ) + 1 ) ); //获取文件管理器文件名
 
-$dir = ( isset( $_POST[ '..' ] ) && $_POST[ '..' ] != '..' ) ? $_POST[ '..' ] : '.'; //获取当前目录
+$dir = ( isset( $_POST[ 'dir' ] ) && $_POST[ 'dir' ] != '' ) ? $_POST[ 'dir' ] : '.'; //获取当前目录
 $dir = htmlspecialchars( $dir );
 $dir = dircode( $dir );
 $opendfile = ( isset( $_POST[ 'file' ] ) && $_POST[ 'file' ] != '' ) ? $_POST[ 'file' ] : ''; //获取当前打开的文件
@@ -184,7 +185,7 @@ function maintop() {
 	. '<script src="../system/js/ie10-viewport-bug-workaround.js"></script>'
 	. '<style type="text/css">body{';
 	if ( $showNavbar ): echo 'background-color:#eee';
-	else :echo 'background:url("http://www.iecraft.com/images/bg.jpg") 0 0 no-repeat;background-size:cover;';
+        else :echo 'background:url("https://download.mbrjun.cn/Sub/data/imgs/login.jpg") 0 0 no-repeat;background-size:cover;';
 	endif;
 	echo '}.form-signin{max-width:330px;padding:15px;margin:0 auto}.form-signin .checkbox,.form-signin .form-signin-heading{margin-bottom:10px}.form-signin .checkbox{font-weight:400}.form-signin .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px}.form-signin .form-control:focus{z-index:2}.form-signin input[type=email]{margin-bottom:-1px;border-bottom-right-radius:0;border-bottom-left-radius:0}.form-signin input[type=password]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0}.blog-footer{padding:10px 0;color:#999;text-align:center;background-color:#262626;border-top:20px solid #e5e5e5;}.blog-footer p:last-child{margin-bottom:0;}thead>tr>th>a:link,thead>tr>th>a:hover,thead>tr>th>a:active{color:#000;text-decoration:none;}tr.active td{background-color:#ccc!important;}.btn-group.operate{position:fixed;left:35%;bottom:1%;}@media screen and (max-width:425px){.btn-group.operate{left:0%;}}@media screen and (max-width:320px){.btn-group.operate{}#filetable.table>tbody>tr>td, #filetable.table>tbody>tr>th, #filetable.table>tfoot>tr>td, #filetable.table>tfoot>tr>th, #filetable.table>thead>tr>td, #filetable.table>thead>tr>th{padding-left:0;padding-right:0;}}div.page-header.text-center span{display:inline-block;height:65px;width:65px;background:url("https://download.mbrjun.cn/favicon.ico");background-repeat:no-repeat;background-size:contain;}div.page-header.text-center h1{display:inline;}table#filetable td:nth-child(1){word-break:break-all;width:0;}</style>'
 	. '</head>'
@@ -206,7 +207,9 @@ function maintop() {
 		. '</div>'
 		. '</div>'
 		. '</nav>';
+		
 	}
+	
 	echo '<div class="container">'
 	. '<div class="page-header text-center">'
 	. "<span></span><h1></br>$sitetitle</h1>"
@@ -1011,7 +1014,7 @@ $dirarray[$i]=encode($dirarray[$i])['string'];
 		</li>
 		<?php } ?>
 		<li class="active">
-			<?php echo 当前路径 $dirarray[count($dirarray)-1] ?>
+			<?php echo $dirarray[count($dirarray)-1] ?>
 		</li>
 	</ul>
 	<a href = 'javascript:void(0);'
