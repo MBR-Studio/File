@@ -2,6 +2,7 @@
 $sitetitle = "File Explorer";
 $username = "user";
 $password = "123456";
+// 用户密码
 $timezone = "Asia/Shanghai";
 $open_basedir = __DIR__;
 $safe_num = 3;
@@ -185,6 +186,7 @@ function maintop() {
 	. '<script src="https://www.google.com/recaptcha/api.js" async defer></script>'
 	. '<!-- MBRBlock + Google ReCAPTCHA -->'
 	. '<style type="text/css">body{';
+	// 是否启用咕鸽验证码：不启用请删除上面两行
 	if ( $showNavbar ): echo 'background-color:#eee';
         else :echo 'background:url("https://download.mbrjun.cn/Sub/data/imgs/login.jpg") 0 0 no-repeat;background-size:cover;';
 	endif;
@@ -215,9 +217,7 @@ function maintop() {
 	. '<div class="page-header text-center">'
 	. "<span></span><h1></br>$sitetitle</h1>"
 	. "<h5>请使用<strong>Chrome</strong>浏览器打开，否则可能导致排版错误</h5>"
-	. "<h5>注意：正在使用内测版本,使用前注意备份数据</h5>"
-	. '</div>'
-	. '<div class="g-recaptcha" data-sitekey="咕鸽验证码API网站Key，选填，填写后开启验证码服务，注册地址https://www.google.com/recaptcha/"></div>'
+	. "<h5>注意：正在使用稳定的Beta版本,使用前注意备份数据</h5>"
 	. '</div>';
 }
 
@@ -231,7 +231,7 @@ function mainbottom() {
 		. '<div id="paddingDiv"></div>'
 	. '<footer class="blog-footer">'
 	. '<p>&copy; MBRBlock File Explorer Online</p>'
-	. '<p>Bulid 2020/6/7 (Beta 1.1.3)</p>'
+	. '<p>Bulid 2020/6/7 (Beta 1.1.4)</p>'
 	. '</footer>'
 	. '<script>if($("body").height()<$(window).height()){$("div#paddingDiv").height($(window).height()-$("body").height());}</script>'
 	. '</body>'
@@ -1929,9 +1929,17 @@ if ( !isset( $_POST[ 'username' ] ) || !isset( $_POST[ 'password' ] ) || ( htmls
 			<label>
 	            <input type="checkbox" name="remember-me"<?php if(isset($_COOKIE['username'])||isset($_COOKIE['password'])){echo ' checked="checked"';}?>> 记住我
 	          </label>
-		
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+		    <form action="?" method="POST">
+            <div class="g-recaptcha" data-callback="robotVerified" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+            </form>
+        <script>
+            function robotVerified(){
+            console.log('reCHPTCHA - Verified');
+            }
+        </script>
+
 	</form>
 	<?php
 	mainbottom();
