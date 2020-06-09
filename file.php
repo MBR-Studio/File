@@ -2,7 +2,6 @@
 $sitetitle = "File Explorer";
 $username = "user";
 $password = "123456";
-//账号密码
 $timezone = "Asia/Shanghai";
 $open_basedir = __DIR__;
 $safe_num = 3;
@@ -183,6 +182,8 @@ function maintop() {
 	. '<script src="../system/js/bootstrap.min.js"></script>'
 	. '<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->'
 	. '<script src="../system/js/ie10-viewport-bug-workaround.js"></script>'
+	. '<script src="https://www.google.com/recaptcha/api.js" async defer></script>'
+	. '<!-- MBRBlock + Google ReCAPTCHA -->'
 	. '<style type="text/css">body{';
 	if ( $showNavbar ): echo 'background-color:#eee';
         else :echo 'background:url("https://download.mbrjun.cn/Sub/data/imgs/login.jpg") 0 0 no-repeat;background-size:cover;';
@@ -214,7 +215,9 @@ function maintop() {
 	. '<div class="page-header text-center">'
 	. "<span></span><h1></br>$sitetitle</h1>"
 	. "<h5>请使用<strong>Chrome</strong>浏览器打开，否则可能导致排版错误</h5>"
-	. "<h5>注意：正在使用稳定的Beta版本,使用前注意备份数据</h5>"
+	. "<h5>注意：正在使用内测版本,使用前注意备份数据</h5>"
+	. '</div>'
+	. '<div class="g-recaptcha" data-sitekey="咕鸽验证码API网站Key，选填，填写后开启验证码服务，注册地址https://www.google.com/recaptcha/"></div>'
 	. '</div>';
 }
 
@@ -228,7 +231,7 @@ function mainbottom() {
 		. '<div id="paddingDiv"></div>'
 	. '<footer class="blog-footer">'
 	. '<p>&copy; MBRBlock File Explorer Online</p>'
-	. '<p>Bulid 2020/6/7 (Beta 1.1.2)</p>'
+	. '<p>Bulid 2020/6/7 (Beta 1.1.3)</p>'
 	. '</footer>'
 	. '<script>if($("body").height()<$(window).height()){$("div#paddingDiv").height($(window).height()-$("body").height());}</script>'
 	. '</body>'
@@ -2090,4 +2093,12 @@ if ( !isset( $_POST[ 'username' ] ) || !isset( $_POST[ 'password' ] ) || ( htmls
 	<?php
 	mainbottom();
 }
+
+/**
+ * Google Recaptcha
+ * MBRBlock
+ */
+
+
+
 ?>
